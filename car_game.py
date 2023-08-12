@@ -9,8 +9,7 @@ Original file is located at
 
 # ----------------These code is to simulate a car game-----------
 
-start_count=1  # This is to prevent repetitive start command
-stop_count=1   # This is to prevent repetitive stop command
+started=False  # This is to prevent repetitive start command
 
 
 while True:  # If we write while True then the loop will run forever.
@@ -24,20 +23,20 @@ while True:  # If we write while True then the loop will run forever.
     quit: quit car. \n""")
 
   elif command=="START":
-    if start_count<=1:
-      print("Ready to start... \n")
-      start_count+=1
-    else:
+
+    if started:
       print("******* Car has already started *******\n")
-
-
+    else:
+      started= True
+      print("Ready to start... \n")
 
   elif command=="STOP":
-    if stop_count<=1:
-      print("Car stopped!\n")
-      stop_count+=1
-    else:
+
+    if not started:
       print("******* Car has already stopped *******\n")
+    else:
+      started= False
+      print("Car stopped!\n")
 
   elif command=="QUIT":
     print("Quit car\n")
